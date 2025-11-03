@@ -47,7 +47,7 @@ tag_map = {
 ```
 
 > [!IMPORTANT]
-> The attribute mappings are not context-dependent, i.e. they get applied to all tags, anywhere in the file. For example, if you implement a different bsdf with a `albedo` attribute, then this will also be remapped to `reflectance`, which might not be recognized by Mitsuba.
+> The attribute mappings are not context-dependent, i.e. they get applied to all tags, anywhere in the file. For example, if you implement a different bsdf with an `albedo` attribute, then this will also be remapped to `reflectance`, which might not be recognized by Mitsuba.
 
 Full list of attribute mappings:
 
