@@ -47,7 +47,7 @@ tag_map = {
 ```
 
 > [!IMPORTANT]
-> The attribute mappings are not context-dependent, i.e. they get applied to all tags, anywhere in the file. For example, if you implement a different bsdf with an `albedo` attribute, then this will also be remapped to `reflectance`, which might not be recognized by Mitsuba.
+> The attribute mappings are not context-dependent, i.e. they get applied to all tags, anywhere in the file. For example, if you implement a different bsdf with an `albedo` attribute, then this will also be remapped to `reflectance`, which might not get recognized by Mitsuba.
 
 Full list of attribute mappings:
 
@@ -68,12 +68,13 @@ Full list of attribute mappings:
 | Disney BSDF  | name          | clearcoatGloss | clearcoat_gloss |
 | Disney BSDF  | name          | subsurface     | flatness        |
 
-You might need to adjust the `attrib_map` dictionary to fit your needs.
+> [!TIP]
+> You can easily add 'translations' for other textures/shaders/etc. by adjusting the `attrib_map` dictionary in the script.
 
 ### Limitations
 
 - Mitsuba doesn't have a simple microfacet BSDF. I think it can be achieved with a blend of a diffuse BSDF and a rough dielectric BSDF, but due to the simple remapping of tags and attributes, this is not supported.
-- Remapping is not context-dependent. For example, any tag that contains `name="albedo"` as an attribute will be remapped to `name="reflectance"`. This might not be the desired behavior in all cases.
-- General scene info (integrator, sampler, camera, etc.) is handled differently than object info. This means that it is not as flexible as it could be. For example, if you want to have a parameter in the integrator (e.g. `minDepth`), then you would have to change the code to accout for this.
+- Remapping is not context-dependent. For example, any tag that contains `name="albedo"` as an attribute will be remapped to `name="reflectance"`. This might not be the desired behavior in some cases.
+- General scene info (integrator, sampler, camera, etc.) is handled differently than object info. It is not as flexible as it could be. For example, if you want to have a parameter in the integrator (e.g. `minDepth`), then you would have to change the code to accout for this.
 - Mitsuba doesn't recognize the `rotate` tag in a `transform`.
 - Pointlights are supported but Mitsuba uses a different unit for intensity (power per unit steradian instead of total power). Due to the simple remapping, there is no conversion of the intensity.
