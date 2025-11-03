@@ -1,6 +1,6 @@
 # Nori to Mitsuba Converter
 
-A simple python script to convert Nori scene files to Mitsuba scene files. The converter is very basic and only supports a limited set of features, but can be very useful for quick comparisons.
+A simple python script that converts Nori scenes to Mitsuba scenes (XML to XML). The converter is very basic and only supports a limited set of features, but can be very useful for quick comparisons.
 
 ### Usage
 
